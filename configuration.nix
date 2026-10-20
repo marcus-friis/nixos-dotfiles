@@ -74,7 +74,10 @@
   boot.kernelPackages = pkgs.linuxPackages;
   
   # Nvidia
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;  # Needed for hearthstone
+  };
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     open = true;                 # needs Turing (GTX 16xx / RTX 20xx) or newer
@@ -82,6 +85,7 @@
     nvidiaSettings = true;       # optional: installs the nvidia-settings GUI
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+  programs.gamemode.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."jeff" = {
@@ -97,16 +101,26 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  # Install steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    git
+    vim
     neovim    
     wget
     foot
+    lutris  # for hearthstone
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -153,4 +167,3 @@
   system.stateVersion = "26.05"; # Did you read the comment?
 
 }
-
