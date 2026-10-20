@@ -72,7 +72,7 @@
 
   # Kernel: use the default
   boot.kernelPackages = pkgs.linuxPackages;
-  
+
   # Nvidia
   hardware.graphics = {
     enable = true;
@@ -95,8 +95,16 @@
     packages = with pkgs; [
       discord
       spotify
+      lutris  # for hearthstone
     ];
   };
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+  fonts.fontconfig.defaultFonts.monospace = [
+    "JetBrainsMono Nerd Font"
+  ];
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -104,9 +112,9 @@
   # Install steam
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
   };
 
   # Allow unfree packages
@@ -117,11 +125,21 @@
   environment.systemPackages = with pkgs; [
     git
     vim
-    neovim    
+    neovim
+    ripgrep
     wget
+    wl-clipboard
     foot
-    lutris  # for hearthstone
+    tree-sitter
+    gcc
   ];
+
+  environment.sessionVariables = {
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_DATA_HOME   = "$HOME/.local/share";
+    XDG_STATE_HOME  = "$HOME/.local/state";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
