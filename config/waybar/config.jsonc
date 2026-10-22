@@ -4,13 +4,13 @@
     "height": 30,
     "width": 1200,
     "margin-top": 8,
-    "spacing": 24,
+    "spacing": 16,
 
     "modules-left": ["niri/workspaces"],
     "modules-right": [
+        "wireplumber#sink",
         "memory",
         "disk",
-        "wireplumber#sink",
         "clock",
         "group/session"
     ],
@@ -18,8 +18,8 @@
     "niri/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "active": "\uf111",
-            "default": "\uf10c"
+            "active": "●",
+            "default": "○"
         }
     },
 
@@ -31,15 +31,15 @@
     },
 
     "disk": {
-        "format": "\uf0a0 {percentage_used}%",
+        "format": " {percentage_used}%",
         "interval": 30,
         "path": "/"
     },
 
     "wireplumber#sink": {
-        "format": "{icon} {volume}%",
-        "format-muted": "\uf026",
-        "format-icons": ["\uf027", "\uf028"],
+        "format": "{icon}  {volume}%",
+        "format-muted": "",
+        "format-icons": ["", ""],
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
@@ -47,7 +47,7 @@
 
     "clock": {
         "format": "{:%H:%M}",
-        "format-alt": "\uf073 {:%A, %B %d, %Y}",
+        "format-alt": "{:%A, %B %d, %Y}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "month",
@@ -80,21 +80,21 @@
     },
 
     "custom/session-wrap": {
-        "format": "\uf013",
+        "format": "",
         "tooltip-format": "Session"
     },
     "custom/lock": {
-        "format": "\uf023",
+        "format": "",
         "on-click": "swaylock -c 000000",
         "tooltip-format": "Lock"
     },
     "custom/reboot": {
-        "format": "\uf021",
+        "format": "",
         "on-click": "systemctl reboot",
         "tooltip-format": "Reboot"
     },
     "custom/power": {
-        "format": "\uf011",
+        "format": "",
         "on-click": "systemctl poweroff",
         "tooltip-format": "Power off"
     }

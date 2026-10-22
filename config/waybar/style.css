@@ -25,7 +25,7 @@ window#waybar > box {
 
 /* Workspaces */
 #workspaces button {
-    min-width: 20px;
+    min-width: 8px;
     padding: 0 8px;
     margin: 0;
     background: transparent;
@@ -48,8 +48,16 @@ window#waybar > box {
 #custom-lock,
 #custom-reboot,
 #custom-power {
-    min-width: 20px;
-    padding: 0 8px;
+    min-width: 16px;
+    padding: 2px 8px;
+}
+
+
+#clock,
+#memory,
+#disk,
+#wireplumber {
+    padding: 2px 8px;
 }
 
 /* #wireplumber.muted { */
