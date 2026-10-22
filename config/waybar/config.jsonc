@@ -4,6 +4,7 @@
     "height": 30,
     "width": 1200,
     "margin-top": 8,
+    "margin-bottom": 8,
     "spacing": 16,
 
     "modules-left": ["niri/workspaces"],
