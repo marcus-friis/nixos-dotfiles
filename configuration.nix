@@ -45,6 +45,10 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  # Enable Niri
+  programs.niri.enable = true;
+  programs.xwayland.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "dk";
@@ -68,7 +72,6 @@
     # If you want to use JACK applications, uncomment this
     # jack.enable = true;
   };
-
 
   # Kernel: use the default
   boot.kernelPackages = pkgs.linuxPackages;
@@ -130,6 +133,12 @@
     wget
     wl-clipboard
     foot
+    xwayland-satellite
+    waybar
+    fuzzel
+    swaybg
+    swaylock
+    playerctl
     tree-sitter
     gcc
   ];
