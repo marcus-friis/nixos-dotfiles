@@ -1,0 +1,88 @@
+@define-color background #1c1816;
+@define-color foreground #eeeeee;
+@define-color muted      #7a726b;
+@define-color accent     #dbbc7f;
+@define-color hover      #2c2623;
+@define-color red        #e67e80;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+    font-weight: 700;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: @background;
+    color: @foreground;
+}
+
+window#waybar > box {
+    padding: 0 12px;
+}
+
+/* Workspaces */
+#workspaces button {
+    min-width: 20px;
+    padding: 0 8px;
+    margin: 0;
+    background: transparent;
+    color: @muted;
+}
+
+#workspaces button:hover {
+    background: @hover;
+    box-shadow: none;
+    color: @foreground;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    color: @accent;
+    /* box-shadow: inset 0 -2px @accent; */
+}
+
+#custom-session-wrap,
+#custom-lock,
+#custom-reboot,
+#custom-power {
+    min-width: 20px;
+    padding: 0 8px;
+}
+
+/* #wireplumber.muted { */
+/*     color: @muted; */
+/* } */
+
+#clock:hover,
+#memory:hover,
+#wireplumber:hover {
+    background: @hover;
+}
+
+/* Session drawer */
+/* #custom-session-wrap { */
+/*     color: @muted; */
+/* } */
+
+#custom-lock:hover,
+#custom-reboot:hover {
+    background: @hover;
+    color: @accent;
+}
+
+#custom-power:hover {
+    background: @hover;
+    color: @red;
+}
+
+tooltip {
+    background: @background;
+    border: 1px solid @hover;
+}
+
+tooltip label {
+    color: @foreground;
+}
