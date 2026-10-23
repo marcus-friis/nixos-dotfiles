@@ -37,13 +37,12 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
+  services.displayManager.defaultSession = "plasma";
   services.desktopManager.plasma6.enable = true;
 
   # Enable Niri
   programs.niri.enable = true;
   programs.xwayland.enable = true;
-
-  services.displayManager.defaultSession = "plasma";
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -94,6 +93,7 @@
     packages = with pkgs; [
       discord
       spotify
+      localsend
       pkgs-stable.lutris  # for hearthstone
     ];
   };
