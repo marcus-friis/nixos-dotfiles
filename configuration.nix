@@ -1,22 +1,16 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-stable, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-
-  # Enable networking
+  networking.hostName = "jeff-os"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -48,6 +42,8 @@
   # Enable Niri
   programs.niri.enable = true;
   programs.xwayland.enable = true;
+
+  services.displayManager.defaultSession = "plasma";
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -98,7 +94,7 @@
     packages = with pkgs; [
       discord
       spotify
-      lutris  # for hearthstone
+      pkgs-stable.lutris  # for hearthstone
     ];
   };
 
@@ -125,6 +121,7 @@
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
     git
     vim
