@@ -28,7 +28,7 @@
         // "format": "\uf2db {used:0.1f}G",
         "format": "{used:0.1f}G",
         "interval": 5,
-        "on-click": "foot -e htop"
+        "on-click": "foot -e btop"
     },
 
     "disk": {
