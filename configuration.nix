@@ -116,6 +116,12 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  # Open localsend firewall
+  networking.firewall = {
+    allowedTCPPorts = [ 53317 ];
+    allowedUDPPorts = [ 53317 ];
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
