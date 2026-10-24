@@ -155,7 +155,7 @@
     playerctl
     tree-sitter
     gcc
-    htop
+    btop
     unzip
   ];
 
