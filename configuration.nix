@@ -1,10 +1,15 @@
-{ config, pkgs, pkgs-stable, ... }:
+{
+  config,
+  pkgs,
+  pkgs-stable,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -74,13 +79,13 @@
   # Nvidia
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;  # Needed for hearthstone
+    enable32Bit = true; # Needed for hearthstone
   };
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
-    open = true;                 # needs Turing (GTX 16xx / RTX 20xx) or newer
-    modesetting.enable = true;   # needed for Wayland on Plasma 6
-    nvidiaSettings = true;       # optional: installs the nvidia-settings GUI
+    open = true; # needs Turing (GTX 16xx / RTX 20xx) or newer
+    modesetting.enable = true; # needed for Wayland on Plasma 6
+    nvidiaSettings = true; # optional: installs the nvidia-settings GUI
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
   programs.gamemode.enable = true;
@@ -89,12 +94,15 @@
   users.users."jeff" = {
     isNormalUser = true;
     description = "jeff";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       discord
       spotify
       localsend
-      pkgs-stable.lutris  # for hearthstone
+      pkgs-stable.lutris # for hearthstone
     ];
   };
 
@@ -127,7 +135,10 @@
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.systemPackages = with pkgs; [
     git
     vim
@@ -144,13 +155,15 @@
     playerctl
     tree-sitter
     gcc
+    htop
+    unzip
   ];
 
   environment.sessionVariables = {
     XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_CACHE_HOME  = "$HOME/.cache";
-    XDG_DATA_HOME   = "$HOME/.local/share";
-    XDG_STATE_HOME  = "$HOME/.local/state";
+    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
