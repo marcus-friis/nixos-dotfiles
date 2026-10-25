@@ -163,7 +163,7 @@ window-rule {
 binds {
     Mod+Q repeat=false { close-window; }
     Mod+Tab repeat=false { toggle-overview; }
-    Mod+E hotkey-overlay-title="Open a File explorer: Dolphin" { spawn "dolphin"; }
+    Mod+E hotkey-overlay-title="Open a File explorer: Thunar" { spawn "thunar"; }
     Mod+B hotkey-overlay-title="Open a Browser: Firefox" { spawn "firefox"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+S { screenshot; }

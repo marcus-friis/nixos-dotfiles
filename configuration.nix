@@ -40,8 +40,14 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
+  # SDDM
   services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    theme = "where-is-my-sddm-theme";
+    extraPackages = [ pkgs.where-is-my-sddm-theme ];
+  };
+
+  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.defaultSession = "plasma";
   services.desktopManager.plasma6.enable = true;
 
@@ -157,6 +163,8 @@
     gcc
     btop
     unzip
+    where-is-my-sddm-theme
+    thunar
   ];
 
   environment.sessionVariables = {
