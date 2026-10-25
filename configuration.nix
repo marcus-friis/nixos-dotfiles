@@ -108,6 +108,8 @@
       spotify
       localsend
       pkgs-stable.lutris # for hearthstone
+      zathura
+      vlc
     ];
   };
 
