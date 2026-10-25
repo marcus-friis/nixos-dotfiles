@@ -41,10 +41,9 @@
   services.xserver.enable = true;
 
   # SDDM
-  services.displayManager.sddm.enable = true;
   services.displayManager.sddm = {
-    theme = "where-is-my-sddm-theme";
-    extraPackages = [ pkgs.where-is-my-sddm-theme ];
+    enable = true;
+    theme = "where_is_my_sddm_theme";
   };
 
   # Enable the KDE Plasma Desktop Environment.
@@ -161,10 +160,16 @@
     playerctl
     tree-sitter
     gcc
+    cargo
     btop
     unzip
-    where-is-my-sddm-theme
     thunar
+    (where-is-my-sddm-theme.override {
+      themeConfig.General = {
+        showSessionsByDefault = true;
+        showUserRealNameByDefault = true;
+      };
+    })
   ];
 
   environment.sessionVariables = {
