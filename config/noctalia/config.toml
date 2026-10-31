@@ -1,0 +1,70 @@
+# [theme]
+# source = "custom"
+# custom_palette = "Warm"
+# mode = "dark"
+
+[shell]
+font_family = "JetBrainsMono Nerd Font"
+
+# --- Bar: floating, 30px tall, 8px from the top, ~1200px wide on a 1920px screen
+[bar.default]
+position = "top"
+thickness = 30
+margin_edge = 8
+margin_ends = 360
+radius = 0
+background_opacity = 1.0
+padding = 12
+widget_spacing = 16
+font_weight = 700
+capsule = false
+hover_highlight = true
+shadow = false
+
+start  = ["workspaces"]
+center = []
+end    = ["volume", "ram", "disk", "clock", "session"]
+
+# --- Workspaces: dots, gold when focused, muted otherwise
+[widget.workspaces]
+display = "none"
+focused_color = "primary"
+occupied_color = "on_surface_variant"
+empty_color = "on_surface_variant"
+pill_scale = 0.5
+active_pill_size = 1.0
+inactive_pill_size = 1.0
+
+# --- Memory and disk
+[widget.ram]
+type = "sysmon"
+stat = "ram_used"
+display = "text"
+
+[widget.disk]
+type = "sysmon"
+stat = "disk_pct"
+path = "/"
+display = "text"
+
+[widget.volume]
+device = "output"
+show_label = true
+
+[widget.clock]
+format = "{:%H:%M}"
+
+[widget.session]
+glyph = "shutdown"
+
+# --- Session menu: only lock / reboot / power off, with your commands
+[[shell.session.actions]]
+action = "lock"
+command = "swaylock -c 000000"
+
+[[shell.session.actions]]
+action = "reboot"
+
+[[shell.session.actions]]
+action = "shutdown"
+destructive = true
